@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ${project.name}
+Bundle-SymbolicName: ${project.artifactId}
+Bundle-ClassPath: .
+Bundle-Version: ${project.version}
+Export-Package: 
+ org.eclipse.m2m.atl.common
+
