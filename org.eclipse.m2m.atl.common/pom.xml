@@ -8,25 +8,12 @@
 		<artifactId>org.eclipse.m2m.parent</artifactId>
 		<version>3.4.1</version>
 		<relativePath>../pom.xml</relativePath>
-  	</parent>
+	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eclipse.m2m</groupId>
+	<groupId>org.eclipse.m2m.atl</groupId>
 	<artifactId>org.eclipse.m2m.atl.common</artifactId>
 	<version>3.4.1</version>
 	<packaging>jar</packaging>
-	
-		
-	<dependencies>
-	
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.2</version>
-			<scope>provided</scope>
-		</dependency>
-
-	</dependencies>
-
 
 </project>
