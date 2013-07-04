@@ -16,7 +16,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.m2m.atl.core.ATLCoreException;
 import org.eclipse.m2m.atl.core.IExtractor;
 import org.eclipse.m2m.atl.core.IInjector;
@@ -69,7 +68,7 @@ public final class LauncherService {
 	 * @return the transformation result
 	 */
 	@SuppressWarnings("unchecked")
-	public static Object launch(String mode, IProgressMonitor monitor, ILauncher launcher,
+	public static Object launch(String mode, ILauncher launcher,
 			Map<String, String> inModels, Map<String, String> inoutModels, Map<String, String> outModels,
 			Map<String, String> paths, Map<String, Object> options, Map<String, InputStream> libraries,
 			InputStream... modules) throws ATLCoreException {
@@ -133,7 +132,7 @@ public final class LauncherService {
 		}
 
 		// LAUNCH
-		Object transformationResult = launcher.launch(mode, monitor, options, (Object[])modules);
+		Object transformationResult = launcher.launch(mode, options, (Object[])modules);
 
 		// OUTPUT MODELS EXTRACTION
 		for (Iterator<String> i = outModels.keySet().iterator(); i.hasNext();) {
@@ -159,8 +158,6 @@ public final class LauncherService {
 	 * 
 	 * @param mode
 	 *            the launching mode
-	 * @param monitor
-	 *            the progress monitor
 	 * @param launcher
 	 *            the {@link ILauncher}
 	 * @param modelFactories
@@ -186,7 +183,7 @@ public final class LauncherService {
 	 * @return the transformation result
 	 */
 	@SuppressWarnings("unchecked")
-	public static Object launch(String mode, IProgressMonitor monitor, ILauncher launcher,
+	public static Object launch(String mode, ILauncher launcher,
 			Map<String, ModelFactory> modelFactories, Map<String, IExtractor> extractors,
 			Map<String, IInjector> injectors, Map<String, String> inModels, Map<String, String> inoutModels,
 			Map<String, String> outModels, Map<String, String> paths, Map<String, Object> options,
@@ -246,7 +243,7 @@ public final class LauncherService {
 		}
 
 		// LAUNCH
-		Object transformationResult = launcher.launch(mode, monitor, options, (Object[])modules);
+		Object transformationResult = launcher.launch(mode, options, (Object[])modules);
 
 		// OUTPUT MODELS EXTRACTION
 		for (Iterator<String> i = outModels.keySet().iterator(); i.hasNext();) {

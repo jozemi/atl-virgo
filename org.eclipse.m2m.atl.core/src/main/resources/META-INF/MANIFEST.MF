@@ -1,14 +1,16 @@
 Manifest-Version: 1.0
+Export-Package: org.eclipse.m2m.atl.core;version="3.4.1",org.eclipse.m
+ 2m.atl.core.launch;version="3.4.1";uses:="org.eclipse.m2m.atl.core,or
+ g.eclipse.m2m.atl.core",org.eclipse.m2m.atl.core.service;version="3.4
+ .1";uses:="org.eclipse.m2m.atl.core,org.eclipse.m2m.atl.core.launch",
+ org.eclipse.m2m.atl.core.tracker;version="3.4.1"
+Import-Bundle: org.slf4j.log4j;version="[1.7.2.v20130115-1340,1.7.2.v2
+ 0130115-1340]"
+Bundle-ClassPath: .
+Bundle-Version: 3.4.1
+Tool: Bundlor 1.1.2.RELEASE
+Bundle-Name: org.eclipse.m2m.atl.core
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.m2m.atl.core;singleton:=true
-Bundle-Version: 3.4.0.qualifier
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.m2m.atl.core,
- org.eclipse.m2m.atl.core.launch;uses:="org.eclipse.m2m.atl.core",
- org.eclipse.m2m.atl.core.service;uses:="org.eclipse.m2m.atl.core,org.eclipse.m2m.atl.core.launch"
-Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.core.runtime;visibility:=reexport
-Bundle-Vendor: %providerName
-Bundle-Localization: plugin
+Bundle-SymbolicName: org.eclipse.m2m.atl.core
+Import-Package: org.slf4j;version="[1.7.2,1.7.2]"
 

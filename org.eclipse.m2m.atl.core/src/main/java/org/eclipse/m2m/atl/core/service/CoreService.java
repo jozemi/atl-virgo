@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Obeo - initial API and implementation
+ *     Intelliment Security - Adapted for use Eclipse Blueprint services 
  *******************************************************************************/
 package org.eclipse.m2m.atl.core.service;
 
@@ -16,15 +17,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtension;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.m2m.atl.core.ATLCoreException;
 import org.eclipse.m2m.atl.core.IExtractor;
 import org.eclipse.m2m.atl.core.IInjector;
 import org.eclipse.m2m.atl.core.ModelFactory;
 import org.eclipse.m2m.atl.core.launch.ILauncher;
+import org.eclipse.m2m.atl.core.tracker.GenericTracker;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The CoreService utility class provides a way to use extension points in order to retrieve the needed
@@ -38,6 +39,7 @@ import org.eclipse.m2m.atl.core.launch.ILauncher;
  * For each extension class type, a method returns the list of all detected extensions names.
  * 
  * @author <a href="mailto:william.piers@obeo.fr">William Piers</a>
+ * Modified by <a href="jmperez@intellimentsec.com">Jose Miguel Perez</a>
  */
 public final class CoreService {
 
@@ -57,6 +59,21 @@ public final class CoreService {
 
 	private static Map<String, Class<? extends ModelFactory>> factoryRegistry = new HashMap<String, Class<? extends ModelFactory>>();
 
+	private static GenericTracker tracker;
+	
+	public static GenericTracker getTracker() {
+		return tracker;
+	}
+
+	public static void setTracker(GenericTracker tracker) {
+		CoreService.tracker = tracker;
+	}
+
+	// LOG
+	private static final Logger LOG = LoggerFactory.getLogger(CoreService.class);
+	
+
+	
 	private CoreService() {
 		super();
 	}
@@ -71,6 +88,8 @@ public final class CoreService {
 	public static void registerLauncher(ILauncher launcher) {
 		registerLauncher(launcher.getName(), launcher.getClass());
 	}
+
+	
 
 	/**
 	 * Registers a launcher in the launcherRegistry.
@@ -274,42 +293,14 @@ public final class CoreService {
 			}
 		}
 	}
+	
 
-	private static Object getExtensionClass(String extensionId, String executableExtensionName,
-			String extensionName) throws ATLCoreException {
-		Object executable = null;
-		if (Platform.isRunning()) {
-			final IExtension[] extensions = Platform.getExtensionRegistry().getExtensionPoint(extensionId)
-					.getExtensions();
-			for (int i = 0; i < extensions.length; i++) {
-				final IConfigurationElement[] configElements = extensions[i].getConfigurationElements();
-				for (int j = 0; j < configElements.length; j++) {
-					if (configElements[j].getAttribute("name").equals(extensionName)) { //$NON-NLS-1$
-						try {
-							executable = configElements[j].createExecutableExtension(executableExtensionName);
-						} catch (CoreException e) {
-							throw new ATLCoreException(e.getMessage(), e);
-						}
-					}
-				}
-			}
-		}
-		return executable;
+	private static Object getExtensionClass(String extensionId, String executableExtensionName, String extensionName) throws ATLCoreException {
+		return getTracker().getClass(extensionId,executableExtensionName,extensionName);
 	}
 
 	private static String[] getExtensionsNames(String extensionId) {
-		List<String> names = new ArrayList<String>();
-		if (Platform.isRunning()) {
-			final IExtension[] extensions = Platform.getExtensionRegistry().getExtensionPoint(extensionId)
-					.getExtensions();
-			for (int i = 0; i < extensions.length; i++) {
-				final IConfigurationElement[] configElements = extensions[i].getConfigurationElements();
-				for (int j = 0; j < configElements.length; j++) {
-					names.add(configElements[j].getAttribute("name")); //$NON-NLS-1$
-				}
-			}
-		}
-		return names.toArray(new String[] {});
+		return getTracker().getExtensionsNames(extensionId);
 	}
 
 	/**
@@ -329,22 +320,9 @@ public final class CoreService {
 	 * @return the available launchers names
 	 */
 	public static String[] getLaunchersNames(String mode) {
-		List<String> names = new ArrayList<String>();
-		if (Platform.isRunning()) {
-			final IExtension[] extensions = Platform.getExtensionRegistry().getExtensionPoint(
-					LAUNCHERS_EXTENSION_POINT).getExtensions();
-			for (int i = 0; i < extensions.length; i++) {
-				final IConfigurationElement[] configElements = extensions[i].getConfigurationElements();
-				for (int j = 0; j < configElements.length; j++) {
-					String launcherMode = configElements[j].getAttribute("mode"); //$NON-NLS-1$
-					if (mode == null || (mode != null && (mode.equals(launcherMode) || launcherMode == null))) {
-						names.add(configElements[j].getAttribute("name").toString()); //$NON-NLS-1$
-					}
-				}
-			}
-		}
-		Collections.<String> sort(names);
-		return names.toArray(new String[] {});
+		
+		return getTracker().getLaunchersNames(mode);
+		
 	}
 
 	/**
@@ -395,33 +373,10 @@ public final class CoreService {
 	 * @return the options Map
 	 */
 	public static Map<String, String> getLauncherOptions(String launcherName, String mode) {
-		if (Platform.isRunning()) {
-			final IExtension[] extensions = Platform.getExtensionRegistry().getExtensionPoint(
-					LAUNCHERS_EXTENSION_POINT).getExtensions();
-			for (int i = 0; i < extensions.length; i++) {
-				final IConfigurationElement[] configElements = extensions[i].getConfigurationElements();
-				for (int j = 0; j < configElements.length; j++) {
-					if (launcherName.equals(configElements[j].getAttribute("name"))) { //$NON-NLS-1$
-						Map<String, String> optionsMap = new HashMap<String, String>();
-						IConfigurationElement[] options = configElements[j].getChildren("option"); //$NON-NLS-1$
-						for (int k = 0; k < options.length; k++) {
-							String optionMode = options[k].getAttribute("mode"); //$NON-NLS-1$
-							if (mode == null
-									|| (mode != null && (mode.equals(optionMode) || optionMode == null))) {
-								optionsMap.put(options[k].getAttribute("name"), options[k] //$NON-NLS-1$
-										.getAttribute("description")); //$NON-NLS-1$
-							}
-						}
-						String parentLauncher = configElements[j].getAttribute("parent"); //$NON-NLS-1$
-						if (parentLauncher != null) {
-							optionsMap.putAll(getLauncherOptions(parentLauncher, mode));
-						}
-						return optionsMap;
-					}
-				}
-			}
-		}
-		return null;
+		
+		return getTracker().getLauncherOptions(launcherName, mode);
+		
+			
 	}
 
 	/**
@@ -436,20 +391,6 @@ public final class CoreService {
 			return "Regular VM"; //$NON-NLS-1$
 		}
 		return name;
-	}
-
-	/**
-	 * Tests if eclipse is running.
-	 * 
-	 * @return <code>true</code> if eclipse is running
-	 */
-	public static boolean isEclipseRunning() {
-		try {
-			return Platform.isRunning();
-		} catch (Throwable exception) {
-			// Assume that we aren't running.
-		}
-		return false;
 	}
 
 }
