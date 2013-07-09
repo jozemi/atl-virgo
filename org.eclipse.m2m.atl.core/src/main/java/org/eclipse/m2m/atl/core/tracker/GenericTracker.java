@@ -36,6 +36,9 @@ public class GenericTracker {
 	
 	private Map<String,ExtensionWrapper<?>> modelTracker = new HashMap<String,ExtensionWrapper<?>>();
 	
+	public GenericTracker(){
+		System.out.println("here");
+	}
 	
 	// LOG
 	private static final Logger LOG = LoggerFactory.getLogger(GenericTracker.class);
@@ -71,7 +74,7 @@ public class GenericTracker {
 	 * @param l
 	 * @param properties
 	 */
-	public void register(IExtractor l, Map<String, Object> properties){
+	public void registerExtractor(IExtractor l, Map<String, Object> properties){
 		
 		ExtractorWrapper ew = new ExtractorWrapper(l,properties);		
 		Map<String,ExtensionWrapper<?>> tracker = getTracker((String)properties.get(KEY));
@@ -85,7 +88,7 @@ public class GenericTracker {
 	 * @param l
 	 * @param properties
 	 */
-	public void register(IInjector i, Map<String, Object> properties){
+	public void registerInjector(IInjector i, Map<String, Object> properties){
 		
 		InjectorWrapper iw = new InjectorWrapper(i,properties);		
 		Map<String,ExtensionWrapper<?>> tracker = getTracker((String)properties.get(KEY));
@@ -99,7 +102,7 @@ public class GenericTracker {
 	 * @param l
 	 * @param properties
 	 */
-	public void register(ILauncher il, Map<String, Object> properties){
+	public void registerLauncher(ILauncher il, Map<String, Object> properties){
 		
 		LauncherWrapper ilw = new LauncherWrapper(il,properties);		
 		Map<String,ExtensionWrapper<?>> tracker = getTracker((String)properties.get(KEY));

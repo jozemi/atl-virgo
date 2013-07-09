@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.eclipse.m2m.atl.engine.emfvm</name>
+	<name>org.eclipse.m2m.atl.core.emf</name>
 	<comment></comment>
 	<projects>
 		<project>org.eclipse.m2m.atl.common</project>
@@ -22,18 +22,11 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>org.github.pde2virgo.manifestBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.virgo.ide.facet.core.bundlenature</nature>
-		<nature>org.github.pde2virgo.PDE2VirgoNature</nature>
 	</natures>
 </projectDescription>

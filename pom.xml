@@ -10,6 +10,7 @@
 	<modules>
 		<module>org.eclipse.m2m.atl.common</module>
 		<module>org.eclipse.m2m.atl.core</module>
+		<module>org.eclipse.m2m.atl.core.emf</module>
 	</modules>
 
 
@@ -75,7 +76,11 @@
 				<scope>provided</scope>
 			</dependency>
 
+
 		</dependencies>
+		
+		
+		
 	</dependencyManagement>
 		
 </project>
