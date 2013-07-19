@@ -10,4 +10,4 @@ Export-Package: org.eclipse.m2m.atl.engine.extractors,
  org.eclipse.m2m.atl.engine.injectors.xml,
  org.eclipse.m2m.atl.engine.vm,
  org.eclipse.m2m.atl.engine.vm.nativelib
-Import-Bundle: org.eclipse.m2m.atl.common
+Import-Template: org.eclipse.m2m.atl.*;version="[${project.version},${project.version}]"

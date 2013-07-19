@@ -13,7 +13,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.m2m.atl</groupId>
 	<artifactId>org.eclipse.m2m.atl.common</artifactId>
-	<version>3.4.1</version>
 	<packaging>jar</packaging>
 
 </project>

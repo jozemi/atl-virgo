@@ -11,6 +11,9 @@
 		<module>org.eclipse.m2m.atl.common</module>
 		<module>org.eclipse.m2m.atl.core</module>
 		<module>org.eclipse.m2m.atl.core.emf</module>
+		<module>org.eclipse.m2m.atl.engine</module>
+		<module>org.eclipse.m2m.atl.engine.emfvm</module>
+		<module>org.eclipse.m2m.atl.engine.vm</module>
 	</modules>
 
 

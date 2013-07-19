@@ -4,5 +4,5 @@ Bundle-Name: ${project.name}
 Bundle-SymbolicName: ${project.artifactId}
 Bundle-ClassPath: .
 Bundle-Version: ${project.version}
-Import-Package: org.eclipse.m2m.atl.common;version="[${project.version},${project.version}]"
+Import-Template: org.eclipse.m2m.atl.*;version="[${project.version},${project.version}]"
 

@@ -5,6 +5,7 @@
 	<projects>
 		<project>org.eclipse.m2m.atl.common</project>
 		<project>org.eclipse.m2m.atl.core</project>
+		<project>org.eclipse.m2m.atl.core.emf</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -23,11 +24,6 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.github.pde2virgo.manifestBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
 			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
@@ -35,11 +31,9 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
-		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.virgo.ide.facet.core.bundlenature</nature>
-		<nature>org.github.pde2virgo.PDE2VirgoNature</nature>
 	</natures>
 </projectDescription>
