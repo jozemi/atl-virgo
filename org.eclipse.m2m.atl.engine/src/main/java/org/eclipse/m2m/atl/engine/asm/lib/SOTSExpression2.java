@@ -134,7 +134,7 @@ public class SOTSExpression2 {
 								Object[] arguments = calleeFrame.getLocalVars();
 								arguments[0] = o;
 								if (oper instanceof ASMOperation) {
-									v = ((ASMOperation)oper).exec(calleeFrame, null);
+									v = ((ASMOperation)oper).exec(calleeFrame);
 								} else {
 									v = oper.exec(calleeFrame);
 								}

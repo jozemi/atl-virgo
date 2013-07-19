@@ -11,10 +11,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.logging.Level;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.engine.Messages;
 import org.eclipse.m2m.atl.engine.emfvm.StackFrame;
@@ -162,17 +158,17 @@ public class ASMString implements LibExtension {
 	 */
 	private static File getFile(String path) {
 		String newPath = path;
-		if (Platform.isRunning()) {
-			IPath location = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path)).getLocation();
-			if (location != null) {
-				newPath = location.toString();
-			} else {
-				ATLLogger
-						.info(Messages.getString("ASMString_WORKSPACE_FILE_NOT_FOUND", new Object[] {path,})); //$NON-NLS-1$
-			}
-		} else {
-			ATLLogger.info(Messages.getString("ASMString_WORKSPACE_NOT_FOUND")); //$NON-NLS-1$
-		}
+//		if (Platform.isRunning()) {
+//			IPath location = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path)).getLocation();
+//			if (location != null) {
+//				newPath = location.toString();
+//			} else {
+//				ATLLogger
+//						.info(Messages.getString("ASMString_WORKSPACE_FILE_NOT_FOUND", new Object[] {path,})); //$NON-NLS-1$
+//			}
+//		} else {
+//			ATLLogger.info(Messages.getString("ASMString_WORKSPACE_NOT_FOUND")); //$NON-NLS-1$
+//		}
 		return new File(newPath);
 	}
 }

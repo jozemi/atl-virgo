@@ -13,7 +13,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.m2m.atl</groupId>
 	<artifactId>org.eclipse.m2m.atl.engine</artifactId>
-	<version>3.4.1</version>
 	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.engine.emfvm</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+	</dependencies>
 
 </project>

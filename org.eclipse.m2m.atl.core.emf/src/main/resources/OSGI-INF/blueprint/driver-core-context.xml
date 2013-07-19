@@ -7,4 +7,25 @@
 	
 	<bean id="emfExtractor" class="org.eclipse.m2m.atl.core.emf.EMFExtractor" />
 	
+	<bean id="emfInjector" class="org.eclipse.m2m.atl.core.emf.EMFInjector" />
+	
+<!-- 	<extension -->
+<!--          point="org.eclipse.m2m.atl.core.model"> -->
+<!--       <model -->
+<!--             model="org.eclipse.m2m.atl.core.emf.EMFModel" -->
+<!--             modelFactory="org.eclipse.m2m.atl.core.emf.EMFModelFactory" -->
+<!--             name="EMF" -->
+<!--             referenceModel="org.eclipse.m2m.atl.core.emf.EMFReferenceModel"> -->
+<!--       </model> -->
+<!--    </extension> -->
+	
+		
+	<bean id="model" class="org.eclipse.m2m.atl.core.tracker.wrapper.ModelWrapper" >
+		<property name="model" value="org.eclipse.m2m.atl.core.emf.EMFModel" />
+		<property name="modelFactory" value="org.eclipse.m2m.atl.core.emf.EMFModelFactory" />
+		<property name="name" value="EMF" />
+		<property name="referenceModel" value="org.eclipse.m2m.atl.core.emf.EMFReferenceModel" />
+	</bean>
+
+	
 </blueprint>

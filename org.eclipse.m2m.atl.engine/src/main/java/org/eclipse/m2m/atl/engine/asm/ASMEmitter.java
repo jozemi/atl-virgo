@@ -17,7 +17,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Iterator;
 
-import org.eclipse.m2m.atl.engine.compiler.AtlDefaultCompiler;
 
 /**
  * This class is used by ATL compiler to create an ASM file.
@@ -180,31 +179,31 @@ public class ASMEmitter {
 		asm.setVersion(version);
 	}
 
-	/**
-	 * Writes the {@link ASM} to a file.
-	 * 
-	 * @param fileName
-	 *            the file where to write
-	 */
-	public void dumpASM(String fileName) {
-		finishOperation();
-		if (fileName.equals(DIRECT_COMPILATION)) {
-			OutputStream os = AtlDefaultCompiler.getCompilationOutputStream();
-			if (os != null) {
-				PrintWriter out = new PrintWriter(os);
-				new ASMXMLWriter(out, false).print(asm);
-				out.close();
-			} else {
-				throw new ASMEmitterException("Output stream not found"); //$NON-NLS-1$
-			}
-		} else {
-			try {
-				PrintWriter out = new PrintWriter(new FileWriter(fileName));
-				new ASMXMLWriter(out, false).print(asm);
-				out.close();
-			} catch (IOException ioe) {
-				throw new ASMEmitterException(ioe.getLocalizedMessage(), ioe);
-			}
-		}
-	}
+//	/**
+//	 * Writes the {@link ASM} to a file.
+//	 * 
+//	 * @param fileName
+//	 *            the file where to write
+//	 */
+//	public void dumpASM(String fileName) {
+//		finishOperation();
+//		if (fileName.equals(DIRECT_COMPILATION)) {
+//			OutputStream os = AtlDefaultCompiler.getCompilationOutputStream();
+//			if (os != null) {
+//				PrintWriter out = new PrintWriter(os);
+//				new ASMXMLWriter(out, false).print(asm);
+//				out.close();
+//			} else {
+//				throw new ASMEmitterException("Output stream not found"); //$NON-NLS-1$
+//			}
+//		} else {
+//			try {
+//				PrintWriter out = new PrintWriter(new FileWriter(fileName));
+//				new ASMXMLWriter(out, false).print(asm);
+//				out.close();
+//			} catch (IOException ioe) {
+//				throw new ASMEmitterException(ioe.getLocalizedMessage(), ioe);
+//			}
+//		}
+//	}
 }

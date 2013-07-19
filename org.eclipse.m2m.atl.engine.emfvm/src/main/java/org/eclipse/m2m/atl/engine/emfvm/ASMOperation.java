@@ -25,8 +25,6 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.WeakHashMap;
 
-import org.eclipse.core.runtime.Assert;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.engine.emfvm.lib.AbstractStackFrame;
 import org.eclipse.m2m.atl.engine.emfvm.lib.ExecEnv;
@@ -303,12 +301,12 @@ public class ASMOperation extends Operation {
 	 *            the progress monitor
 	 * @return the result
 	 */
-	public Object exec(AbstractStackFrame frame, IProgressMonitor monitor) {
-		if (monitor != null) {
-			if (monitor.isCanceled()) {
-				throw new VMException(null, Messages.getString("ASMOperation.EXECUTION_CANCELED")); //$NON-NLS-1$
-			}
-		}
+	public Object exec(AbstractStackFrame frame) {
+//		if (monitor != null) {
+//			if (monitor.isCanceled()) {
+//				throw new VMException(null, Messages.getString("ASMOperation.EXECUTION_CANCELED")); //$NON-NLS-1$
+//			}
+//		}
 		final ExecEnv execEnv = frame.getExecEnv();
 
 		// Note: debug is not initialized from a constant, and therefore has a performance impact
@@ -385,14 +383,14 @@ public class ASMOperation extends Operation {
 							--fp; // pop self, that we already retrieved earlier to get the operation
 							arguments[0] = self;
 							if (operation instanceof ASMOperation) {
-								s = ((ASMOperation)operation).exec(calleeFrame.enter(), monitor);
+								s = ((ASMOperation)operation).exec(calleeFrame.enter());
 								calleeFrame.leave();
 							} else {
 								s = operation.exec(calleeFrame.enter());
 								calleeFrame.leave();
 							}
 						} else {
-							Assert.isTrue(bytecode.getOperand() instanceof String);
+//							Assert.isTrue(bytecode.getOperand() instanceof String);
 							// find native method
 							Object[] arguments = new Object[nbCalleeArgs];
 
@@ -645,15 +643,15 @@ public class ASMOperation extends Operation {
 		return fp > 0 ? stack[--fp] : null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.m2m.atl.engine.emfvm.lib.Operation#exec(org.eclipse.m2m.atl.engine.emfvm.lib.AbstractStackFrame)
-	 */
-	@Override
-	public Object exec(AbstractStackFrame frame) {
-		return exec(frame, null);
-	}
+//	/**
+//	 * {@inheritDoc}
+//	 * 
+//	 * @see org.eclipse.m2m.atl.engine.emfvm.lib.Operation#exec(org.eclipse.m2m.atl.engine.emfvm.lib.AbstractStackFrame)
+//	 */
+//	@Override
+//	public Object exec(AbstractStackFrame frame) {
+//		return exec(frame, null);
+//	}
 
 	public ASM getASM() {
 		return asm;

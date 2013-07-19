@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.runtime.Assert;
+//import org.eclipse.core.runtime.Assert;
 import org.eclipse.m2m.atl.engine.emfvm.lib.ASMModule;
 import org.eclipse.m2m.atl.engine.emfvm.lib.ExecEnv;
 
@@ -230,7 +230,7 @@ public class AtlSuperimposeModule {
 		for (Iterator<ASMOperation> i = asm.getOperations(); i.hasNext();) {
 			ASMOperation thisOp = i.next();
 			if (op.equals(thisOp.getName())) {
-				Assert.isTrue(newOp == null);
+//				Assert.isTrue(newOp == null);
 				newOp = thisOp;
 			}
 		}
@@ -388,7 +388,7 @@ public class AtlSuperimposeModule {
 		for (Iterator<ASMOperation> i = asm.getOperations(); i.hasNext();) {
 			ASMOperation asmOp = i.next();
 			if (op.equals(asmOp.getName())) {
-				Assert.isTrue(!removed);
+//				Assert.isTrue(!removed);
 				i.remove();
 				removed = true;
 			}

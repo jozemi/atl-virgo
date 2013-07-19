@@ -8,8 +8,18 @@
 
 	<osgi:service ref="emfExtractor" interface="org.eclipse.m2m.atl.core.IExtractor">		
 		<osgi:service-properties value-type="java.lang.String">
+			<entry key="epoint" value="org.eclipse.m2m.atl.core.extractor" />
+			<entry key="name" value="EMF" />
+		</osgi:service-properties>
+	</osgi:service>
+	
+	<osgi:service ref="emfInjector" interface="org.eclipse.m2m.atl.core.IInjector">		
+		<osgi:service-properties value-type="java.lang.String">
 			<entry key="epoint" value="org.eclipse.m2m.atl.core.injector" />
 			<entry key="name" value="EMF" />
 		</osgi:service-properties>
 	</osgi:service>
+	
+	<osgi:service ref="model" interface="org.eclipse.m2m.atl.core.IModelWrapper"/>
+	
 </beans>

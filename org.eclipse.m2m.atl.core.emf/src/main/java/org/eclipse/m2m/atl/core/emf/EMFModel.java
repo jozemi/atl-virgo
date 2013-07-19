@@ -41,6 +41,7 @@ public class EMFModel implements IModel {
 	/** The metamodel. */
 	protected EMFReferenceModel referenceModel;
 
+
 	protected Map<EClass, Set<EObject>> elementsByType = new HashMap<EClass, Set<EObject>>();
 
 	private Resource resource;
@@ -48,7 +49,7 @@ public class EMFModel implements IModel {
 	private EMFModelFactory modelFactory;
 
 	private boolean isTarget;
-	
+
 	/**
 	 * Creates a new {@link EMFModel} conforming to the given {@link EMFReferenceModel}.
 	 * 
@@ -61,6 +62,7 @@ public class EMFModel implements IModel {
 		this.referenceModel = referenceModel;
 		this.modelFactory = mf;
 	}
+	
 
 	/**
 	 * {@inheritDoc}

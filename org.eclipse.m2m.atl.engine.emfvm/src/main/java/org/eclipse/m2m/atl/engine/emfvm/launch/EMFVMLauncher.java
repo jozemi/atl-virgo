@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.m2m.atl.common.ATLLogger;
 import org.eclipse.m2m.atl.core.IModel;
 import org.eclipse.m2m.atl.core.launch.ILauncher;
@@ -134,9 +133,9 @@ public class EMFVMLauncher implements ILauncher {
 	 * @see org.eclipse.m2m.atl.core.launch.ILauncher#launch(java.lang.String,
 	 *      org.eclipse.core.runtime.IProgressMonitor, java.util.Map, java.lang.Object[])
 	 */
-	public Object launch(final String mode, final IProgressMonitor monitor,
+	public Object launch(final String mode,
 			final Map<String, Object> options, final Object... modules) {
-		return internalLaunch(null, monitor, options, modules);
+		return internalLaunch(null, options, modules);
 	}
 
 	/**
@@ -152,7 +151,7 @@ public class EMFVMLauncher implements ILauncher {
 	 *            the transformation modules
 	 * @return the execution result
 	 */
-	protected Object internalLaunch(ITool[] tools, final IProgressMonitor monitor,
+	protected Object internalLaunch(ITool[] tools, 
 			final Map<String, Object> options, Object... modules) {
 		List<ASM> superimpose = new ArrayList<ASM>();
 		ASM mainModule = getASMFromObject(modules[0]);
@@ -167,7 +166,7 @@ public class EMFVMLauncher implements ILauncher {
 		}
 		modelAdapter.setAllowInterModelReferences(LauncherService.getBooleanOption(options
 				.get("allowInterModelReferences"), false)); //$NON-NLS-1$ 	
-		return mainModule.run(tools, models, libraries, superimpose, options, monitor, modelAdapter);
+		return mainModule.run(tools, models, libraries, superimpose, options, modelAdapter);
 	}
 
 	/**

@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.m2m.atl.engine.extractors;version="3.4.1";
+ uses:="org.eclipse.m2m.atl.engine.vm.nativelib",org.eclipse.m2m.atl.e
+ ngine.extractors.xml;version="3.4.1";uses:="org.eclipse.m2m.atl.engin
+ e.extractors,org.eclipse.m2m.atl.engine.vm.nativelib",org.eclipse.m2m
+ .atl.engine.injectors;version="3.4.1";uses:="org.eclipse.m2m.atl.engi
+ ne.vm.nativelib",org.eclipse.m2m.atl.engine.injectors.xml;version="3.
+ 4.1";uses:="org.eclipse.m2m.atl.engine.injectors,org.eclipse.m2m.atl.
+ engine.vm.nativelib,org.xml.sax,org.xml.sax.helpers",org.eclipse.m2m.
+ atl.engine.vm;version="3.4.1";uses:="org.eclipse.m2m.atl.engine.vm.na
+ tivelib,org.xml.sax,org.xml.sax.helpers",org.eclipse.m2m.atl.engine.v
+ m.nativelib;version="3.4.1";uses:="org.eclipse.m2m.atl.engine.vm"
+Import-Bundle: org.eclipse.m2m.atl.common
+Bundle-ClassPath: .
+Bundle-Version: 3.4.1
+Tool: Bundlor 1.1.2.RELEASE
+Bundle-Name: org.eclipse.m2m.atl.engine.vm
+Bundle-ManifestVersion: 2
+Import-Package: javax.xml.parsers,org.eclipse.core.runtime,org.eclipse
+ .m2m.atl.common,org.osgi.framework,org.xml.sax,org.xml.sax.helpers
+Bundle-SymbolicName: org.eclipse.m2m.atl.engine.vm
+
