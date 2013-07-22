@@ -3,6 +3,7 @@
 	<name>org.eclipse.m2m.atl.engine.vm</name>
 	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
+		<project>org.eclipse.m2m.atl.common</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
