@@ -22,10 +22,17 @@
 			<version>3.4.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.eclipse.m2m.atl</groupId>
 			<artifactId>org.eclipse.m2m.atl.core</artifactId>
+			<version>3.4.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.common</artifactId>
 			<version>3.4.1</version>
 			<scope>provided</scope>
 		</dependency>
