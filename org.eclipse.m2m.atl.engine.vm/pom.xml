@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<parent>
+		<groupId>org.eclipse.m2m.atl</groupId>
+		<artifactId>org.eclipse.m2m.parent</artifactId>
+		<version>3.4.1</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse.m2m.atl</groupId>
+	<artifactId>org.eclipse.m2m.atl.engine.vm</artifactId>	
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.m2m.atl</groupId>
+			<artifactId>org.eclipse.m2m.atl.common</artifactId>
+			<version>3.4.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>

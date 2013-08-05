@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ${project.name}
+Bundle-SymbolicName: ${project.artifactId}
+Bundle-ClassPath: .
+Bundle-Version: ${project.version}
+Export-Package: org.eclipse.m2m.atl.engine.extractors,
+ org.eclipse.m2m.atl.engine.extractors.xml,
+ org.eclipse.m2m.atl.engine.injectors,
+ org.eclipse.m2m.atl.engine.injectors.xml,
+ org.eclipse.m2m.atl.engine.vm,
+ org.eclipse.m2m.atl.engine.vm.nativelib
+Import-Template: org.eclipse.m2m.atl.*;version="[${project.version},${project.version}]"

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:osgi="http://www.eclipse.org/gemini/blueprint/schema/blueprint" 
+   xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.eclipse.org/gemini/blueprint/schema/blueprint 
+       http://www.eclipse.org/gemini/blueprint/schema/blueprint/gemini-blueprint.xsd">
+
+	<osgi:list id="iExtractorTracker" interface="org.eclipse.m2m.atl.core.IExtractor" cardinality="0..N">
+        <osgi:reference-listener bind-method="register" unbind-method="unRegister" ref="tracker"/>
+    </osgi:list>
+    
+    <osgi:list id="iInjectorTracker" interface="org.eclipse.m2m.atl.core.IInjector" cardinality="0..N">
+        <osgi:reference-listener bind-method="register" unbind-method="unRegister" ref="tracker"/>
+    </osgi:list>
+    
+    <osgi:list id="iLauncherTracker" interface="org.eclipse.m2m.atl.core.launch.ILauncher" cardinality="0..N">
+        <osgi:reference-listener bind-method="register" unbind-method="unRegister" ref="tracker"/>
+    </osgi:list>
+    
+    <osgi:list id="iModelTracker" interface="org.eclipse.m2m.atl.core.IModelWrapper" cardinality="0..N">
+        <osgi:reference-listener bind-method="register" unbind-method="unRegisterModel" ref="tracker"/>
+    </osgi:list>
+
+</beans>

@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.m2m.atl.core.emf;version="3.4.1";uses:="or
+ g.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore
+ .resource,org.eclipse.m2m.atl.core"
+Bundle-ClassPath: .
+Bundle-Version: 3.4.1
+Tool: Bundlor 1.1.2.RELEASE
+Bundle-Name: org.eclipse.m2m.atl.core.emf
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.m2m.atl.core.emf
+Import-Package: org.eclipse.emf.common.util,org.eclipse.emf.ecore;vers
+ ion="[2.7.0.v20110128-1409,2.7.0.v20110128-1409]",org.eclipse.emf.eco
+ re.resource;version="[2.7.0.v20110128-1409,2.7.0.v20110128-1409]",org
+ .eclipse.emf.ecore.resource.impl;version="[2.7.0.v20110128-1409,2.7.0
+ .v20110128-1409]",org.eclipse.emf.ecore.xmi;version="[2.6.0.v20110126
+ -1727,2.6.0.v20110126-1727]",org.eclipse.emf.ecore.xmi.impl,org.eclip
+ se.m2m.atl.common;version="[3.4.1,3.4.1]",org.eclipse.m2m.atl.core;ve
+ rsion="[3.4.1,3.4.1]",org.eclipse.m2m.atl.core.service,org.eclipse.m2
+ m.atl.core.tracker.wrapper;version="[3.4.1,3.4.1]"
+
