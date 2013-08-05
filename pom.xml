@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eclipse.emf</groupId>
+	<groupId>org.eclipse.m2m.atl</groupId>
 	<artifactId>org.eclipse.m2m.parent</artifactId>
 	<version>3.4.1</version>
 	<packaging>pom</packaging>
@@ -65,8 +65,7 @@
 					</excludes>
 					<junitArtifactName>org.junit:com.springsource.org.junit</junitArtifactName>
 				</configuration>
-			</plugin>
-		</plugins>
+			</plugin>		</plugins>
 	</build>
 
 	<dependencyManagement>
@@ -86,4 +85,6 @@
 		
 	</dependencyManagement>
 		
+
+	
 </project>
